@@ -1,7 +1,9 @@
+import Landing from "./pages/landing";
 
 function App() {
-  return (<h1>Trackr</h1>
-    
+  return (<div><h1>Trackr</h1>
+  <Landing/>
+  </div>
   );
 }
 
