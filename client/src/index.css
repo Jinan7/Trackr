@@ -13,16 +13,16 @@ html {
 
 :root {
   /* colors */
-  --primary-50: #e0fcff;
-  --primary-100: #bef8fd;
-  --primary-200: #87eaf2;
-  --primary-300: #54d1db;
-  --primary-400: #38bec9;
-  --primary-500: #2cb1bc;
-  --primary-600: #14919b;
-  --primary-700: #0e7c86;
-  --primary-800: #0a6c74;
-  --primary-900: #044e54;
+  --primary-50: #fff2e0;
+  --primary-100: #fde0be;
+  --primary-200: #f2b787;
+  --primary-300: #db9154;
+  --primary-400: #c97938;
+  --primary-500: #bc612c;
+  --primary-600: #9b4a14;
+  --primary-700: #86480e;
+  --primary-800: #743d0a;
+  --primary-900: #542104;
 
   /* grey */
   --grey-50: #f0f4f8;
@@ -38,10 +38,10 @@ html {
   /* rest of the colors */
   --black: #222;
   --white: #fff;
-  --red-light: #f8d7da;
-  --red-dark: #842029;
-  --green-light: #d1e7dd;
-  --green-dark: #0f5132;
+  --red-light: #E8AA42;
+  --red-dark: #E57C23;
+  --green-light: #F8F1F1;
+  --green-dark: #025464;
 
   /* fonts  */
   --headingFont: 'Roboto Condensed', Sans-Serif;
