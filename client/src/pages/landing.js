@@ -2,6 +2,7 @@ import React from 'react'
 import {Logo} from '../components'
 import main from '../assets/images/main.svg'
 import Wrapper from '../assets/wrappers/LandingPage'
+import {Link} from 'react-router-dom'
 
 const Landing = () => {
     return <Wrapper>
@@ -20,7 +21,7 @@ const Landing = () => {
         Chambray adaptogen air plant tilde ugh, mlkshk 
         venmo put a bird on it yr.
         </p>
-        <button className='btn btn-hero'>Login/Register</button>
+        <Link to='/register' className='btn btn-hero'>Login/Register</Link>
       </div>
       <div>
         <img src={main} alt='Job track' className='img main-img'></img>
