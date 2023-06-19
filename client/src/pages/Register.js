@@ -13,7 +13,7 @@ const initialState = {
 
 const Register = () => {
     const [values, setValues] = useState(initialState);
-    const {isLoading, showAlert} = useAppContext()
+    const {isLoading, showAlert, displayAlert} = useAppContext()
     const toggleMember = () => {
         setValues({...values, isMember:!values.isMember})
     }
@@ -24,7 +24,7 @@ const Register = () => {
         e.preventDefault()
         const {name, email, password, isMember} = values
         if(!email || !password || (!isMember && !name)){
-            //displayAlert()
+            displayAlert()
             return
         }
         console.log(values);
