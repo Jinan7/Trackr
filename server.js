@@ -1,4 +1,5 @@
 import 'express-async-errors'
+import morgan from 'morgan'
 import express from 'express'
 const app = express()
 import dotenv from 'dotenv'
@@ -15,7 +16,9 @@ import notFoundMiddleware from './middleware/not-found.js'
 import errorHandlerMiddleware from './middleware/error-handler.js'
 
 
-
+if(process.env.NODE_ENV !== 'production'){
+    app.use(morgan('dev'))
+}
 app.use(express.json())
 app.get('/ap1/v1', (req, res) =>{
     res.send('Welcome')
