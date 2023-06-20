@@ -15,13 +15,9 @@ const register = async (req, res, next) => {
     if(userAlreadyExists){
         throw new BadRequestError('Email already in use')
     }
-    try{
-        const user = await User.create({name, email, password})
-        console.log(req.body)
-        res.status(StatusCodes.OK).json({user})
-    } catch (error){
-        next(error)
-    }
+    const user = await User.create({name, email, password})
+    const token = user.createJWT()
+    res.status(StatusCodes.OK).json({user:{email:user.email,lastName:user.lastName, location:user.location, name:user.name}, token, location: user.location})
 }
 
 const login = async (req, res) => {
