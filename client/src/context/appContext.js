@@ -12,7 +12,8 @@ import { DISPLAY_ALERT ,
     SETUP_USER_BEGIN,
     SETUP_USER_ERROR,
     SETUP_USER_SUCCESS,
-    TOGGLE_SIDEBAR} from "./action"
+    TOGGLE_SIDEBAR,
+    LOGOUT_USER} from "./action"
 
 const token = localStorage.getItem('token')
 const user = localStorage.getItem('user')
@@ -103,8 +104,13 @@ const AppProvider = ({children}) => {
     const toggleSidebar = () => {
         dispatch({type: TOGGLE_SIDEBAR})
     }
+
+    const logoutUser = () =>{
+        dispatch({type:LOGOUT_USER})
+        removeUserFromLocalStorage()
+    }
     const [state, dispatch] = useReducer(reducer, initialState)
-    return (<AppContext.Provider value={{...state, displayAlert, registerUser, loginUser, setupUser, toggleSidebar}}>{children}</AppContext.Provider>)
+    return (<AppContext.Provider value={{...state, displayAlert, registerUser, loginUser, setupUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>)
 }
 
 const useAppContext = () => {
