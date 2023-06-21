@@ -16,7 +16,8 @@ import { DISPLAY_ALERT ,
     LOGOUT_USER,
     UPDATE_USER_BEGIN,
     UPDATE_USER_SUCCESS,
-    UPDATE_USER_ERROR,} from "./action"
+    UPDATE_USER_ERROR,
+    HANDLE_CHANGE,} from "./action"
 
 const token = localStorage.getItem('token')
 const user = localStorage.getItem('user')
@@ -164,6 +165,9 @@ const AppProvider = ({children}) => {
             dispatch({type:UPDATE_USER_ERROR, payload:{msg:error.response.data.msg}})
         }
         clearAlert()
+    }
+    const handleChange = ({name, value})=>{
+        dispatch({type:HANDLE_CHANGE, payload:{name, value}})
     }
     return (<AppContext.Provider value={{...state, displayAlert, registerUser, loginUser, setupUser, toggleSidebar, logoutUser, updateUser}}>{children}</AppContext.Provider>)
 }

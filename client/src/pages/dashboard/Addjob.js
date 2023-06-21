@@ -4,12 +4,12 @@ import Wrapper from '../../assets/wrappers/DashboardFormPage'
 
 const AddJob = () => {
 
-    const {isEditing, showAlert, displayAlert, position,company,jobLocation,jobType,jobTypeOptions,status, statusOptions} = useAppContext()
+    const {isEditing, showAlert, displayAlert, position,company,jobLocation,jobType,jobTypeOptions,status, statusOptions,handleChange} = useAppContext()
 
     const handleJobInput = (e) =>{
         const name = e.target.name
         const value = e.target.value
-        console.log(`${name}:${value}`);
+        handleChange({name, value})
     }
 
     const handleSubmit = ()=>{}

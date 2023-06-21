@@ -13,7 +13,8 @@ import { DISPLAY_ALERT ,
         LOGOUT_USER,
         UPDATE_USER_BEGIN,
     UPDATE_USER_SUCCESS,
-    UPDATE_USER_ERROR,} from "./action"
+    UPDATE_USER_ERROR,
+    HANDLE_CHANGE} from "./action"
 import { initialState } from "./appContext"
 const reducer = (state, action) =>{
     if(action.type === DISPLAY_ALERT){
@@ -113,6 +114,11 @@ const reducer = (state, action) =>{
             showAlert:true,
             alertType:'danger',
             alertText:action.payload.msg}
+    }
+    if(action.type == HANDLE_CHANGE){
+        return {
+            ...state, [action.payload.name]:action.payload.value,
+        }
     }
     throw new Error(`no such action : ${action.type}`)
 }
