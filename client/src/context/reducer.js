@@ -8,7 +8,8 @@ import { DISPLAY_ALERT ,
         LOGIN_USER_SUCCESS,
         SETUP_USER_BEGIN,
         SETUP_USER_ERROR,
-        SETUP_USER_SUCCESS} from "./action"
+        SETUP_USER_SUCCESS,
+        TOGGLE_SIDEBAR} from "./action"
 const reducer = (state, action) =>{
     if(action.type === DISPLAY_ALERT){
         return {...state, showAlert:true, alertType:'danger', alertText:'Please provide all values!'}
@@ -78,6 +79,11 @@ const reducer = (state, action) =>{
             showAlert:true,
             alertType:'danger',
             alertText:action.payload.msg}
+    }
+    if(action.type === TOGGLE_SIDEBAR){
+        return {...state, 
+            showSidebar:!state.showSidebar
+            }
     }
     throw new Error(`no such action : ${action.type}`)
 }

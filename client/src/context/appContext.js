@@ -11,7 +11,8 @@ import { DISPLAY_ALERT ,
     LOGIN_USER_SUCCESS,
     SETUP_USER_BEGIN,
     SETUP_USER_ERROR,
-    SETUP_USER_SUCCESS} from "./action"
+    SETUP_USER_SUCCESS,
+    TOGGLE_SIDEBAR} from "./action"
 
 const token = localStorage.getItem('token')
 const user = localStorage.getItem('user')
@@ -24,8 +25,8 @@ const initialState = {
     user:user? JSON.parse(user):null,
     token:token,
     userLocation:userLocation || '',
-    jobLocation:userLocation || ''
-    ,
+    jobLocation:userLocation || '',
+    showSidebar: false,
 
 }
 
@@ -98,8 +99,12 @@ const AppProvider = ({children}) => {
         }
         clearAlert()
     }
+
+    const toggleSidebar = () => {
+        dispatch({type: TOGGLE_SIDEBAR})
+    }
     const [state, dispatch] = useReducer(reducer, initialState)
-    return (<AppContext.Provider value={{...state, displayAlert, registerUser, loginUser, setupUser}}>{children}</AppContext.Provider>)
+    return (<AppContext.Provider value={{...state, displayAlert, registerUser, loginUser, setupUser, toggleSidebar}}>{children}</AppContext.Provider>)
 }
 
 const useAppContext = () => {
