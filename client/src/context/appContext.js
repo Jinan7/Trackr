@@ -169,7 +169,7 @@ const AppProvider = ({children}) => {
     const handleChange = ({name, value})=>{
         dispatch({type:HANDLE_CHANGE, payload:{name, value}})
     }
-    return (<AppContext.Provider value={{...state, displayAlert, registerUser, loginUser, setupUser, toggleSidebar, logoutUser, updateUser}}>{children}</AppContext.Provider>)
+    return (<AppContext.Provider value={{...state, displayAlert, registerUser, loginUser, setupUser, toggleSidebar, logoutUser, updateUser, handleChange}}>{children}</AppContext.Provider>)
 }
 
 const useAppContext = () => {

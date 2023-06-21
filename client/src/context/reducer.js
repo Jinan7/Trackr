@@ -115,7 +115,7 @@ const reducer = (state, action) =>{
             alertType:'danger',
             alertText:action.payload.msg}
     }
-    if(action.type == HANDLE_CHANGE){
+    if(action.type === HANDLE_CHANGE){
         return {
             ...state, [action.payload.name]:action.payload.value,
         }

@@ -19,13 +19,13 @@ const AddJob = () => {
                 <h3>{isEditing?'edit job':'add job'}</h3>
                 {showAlert && <Alert/>}
                 <div className='form-center'>
-                    <FormRow type='text' name='position' value={position} onChange={handleJobInput}/>
-                    <FormRow type='text' name='company' value={company} onChange={handleJobInput}/>
-                    <FormRow type='text' labelText='Job location' name='jobLocation' value={jobLocation} onChange={handleJobInput}/>
+                    <FormRow type='text' name='position' value={position} handleChange={handleJobInput}/>
+                    <FormRow type='text' name='company' value={company} handleChange={handleJobInput}/>
+                    <FormRow type='text' labelText='Job location' name='jobLocation' value={jobLocation} handleChange={handleJobInput}/>
                     <FormRowSelect name='status' value={status} handleChange={handleJobInput} list={statusOptions}/>
                     <FormRowSelect name='jobType'  labelText='Job type' value={jobType} handleChange={handleJobInput} list={jobTypeOptions}/>
                     <div className='btn-container'>
-                    <button type='submit' className='btn btn-block submit-btn' onCLick={handleSubmit}>Submit</button>
+                    <button type='submit' className='btn btn-block submit-btn' onClick={handleSubmit}>Submit</button>
                 </div>
                 </div>
                 
