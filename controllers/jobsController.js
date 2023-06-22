@@ -8,6 +8,7 @@ const createJob = async (req, res) => {
         throw new BadRequestError('Please provide all values')
     }
     req.body.createdBy = req.user.userId
+    console.log(userId)
     const job = await Job.create(req.body)
     res.status(StatusCodes.CREATED).json({job})
 }
@@ -17,7 +18,8 @@ const deleteJob = async (req, res) => {
 }
 
 const getAllJobs = async (req, res) => {
-    res.send("get all jobs")
+    const jobs = await Job.find({createdBy:req.user.userId})
+    res.status(StatusCodes.OK).json({jobs,totalJobs:jobs.length, numOfPages:1})
 }
 
 const updateJob = async (req, res) => {

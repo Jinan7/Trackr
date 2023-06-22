@@ -4,7 +4,7 @@ import Wrapper from '../../assets/wrappers/DashboardFormPage'
 
 const AddJob = () => {
 
-    const {isEditing, showAlert, displayAlert, position,company,jobLocation,jobType,jobTypeOptions,status, statusOptions,handleChange} = useAppContext()
+    const {isEditing, showAlert, displayAlert, position,company,jobLocation,jobType,jobTypeOptions,status, statusOptions,handleChange, clearValues, isLoading, createJob} = useAppContext()
 
     const handleJobInput = (e) =>{
         const name = e.target.name
@@ -12,7 +12,16 @@ const AddJob = () => {
         handleChange({name, value})
     }
 
-    const handleSubmit = ()=>{}
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+        if(!position||!company||!jobLocation){
+            displayAlert()
+        }
+        if(isEditing){
+            return 
+        }
+        createJob()
+    }
     return (
         <Wrapper>
             <form className='form'>
@@ -25,7 +34,8 @@ const AddJob = () => {
                     <FormRowSelect name='status' value={status} handleChange={handleJobInput} list={statusOptions}/>
                     <FormRowSelect name='jobType'  labelText='Job type' value={jobType} handleChange={handleJobInput} list={jobTypeOptions}/>
                     <div className='btn-container'>
-                    <button type='submit' className='btn btn-block submit-btn' onClick={handleSubmit}>Submit</button>
+                    <button type='submit' className='btn btn-block submit-btn' onClick={handleSubmit} disabled={isLoading}>Submit</button>
+                    <button className='btn btn-block clear-btn' onClick={(e)=>{e.preventDefault(); clearValues()}}>clear</button>
                 </div>
                 </div>
                 
